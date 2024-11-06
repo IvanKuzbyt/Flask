@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% if post %}Редагувати{% else %}Додати{% endif %} запис</title>
+</head>
+<body>
+    <h1>{% if post %}Редагувати{% else %}Додати{% endif %} запис</h1>
+    <form method="POST">
+        <input type="text" name="title" value="{% if post %}{{ post.title }}{% endif %}" placeholder="Заголовок">
+        <br>
+        <textarea name="content" placeholder="Вміст запису">{% if post %}{{ post.content }}{% endif %}</textarea>
+        <br>
+        <button type="submit">{% if post %}Зберегти{% else %}Додати{% endif %}</button>
+    </form>
+    <a href="{{ url_for('post_list') }}">Назад до списку записів</a>
+</body>
+</html>
